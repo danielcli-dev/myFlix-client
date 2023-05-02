@@ -27293,33 +27293,51 @@ const MainView = ()=>{
     const [movies, setMovies] = (0, _react.useState)([
         {
             id: 1,
-            title: "Eloquent JavaScript",
-            image: "https://images-na.ssl-images-amazon.com/images/I/51InjRPaF7L._SX377_BO1,204,203,200_.jpg",
-            author: "Marijn Haverbeke"
+            title: "The Shawshank Redemption",
+            Description: "Andy Dufresne (Tim Robbins) is sentenced to two consecutive life terms in prison for the murders of his wife and her lover and is sentenced to a tough prison. However, only Andy knows he didn't commit the crimes. While there, he forms a friendship with Red (Morgan Freeman), experiences brutality of prison life, adapts, helps the warden, etc., all in 19 years.",
+            genre: {
+                Name: "Drama",
+                Description: "In film and television, drama is a category or genre of narrative fiction intended to be more serious than humorous in tone."
+            },
+            image: "https://upload.wikimedia.org/wikipedia/en/8/81/ShawshankRedemptionMoviePoster.jpg",
+            director: {
+                Name: "Frank Darabont",
+                Bio: "Frank \xc1rp\xe1d Darabont is a French-born American film director, screenwriter and producer. He has been nominated for three Academy Awards and a Golden Globe Award. In his early career, he was primarily a screenwriter for such horror films as A Nightmare on Elm Street 3: Dream Warriors, The Blob and The Fly II.",
+                Birth: "1959",
+                Death: null
+            }
         },
         {
             id: 2,
-            title: "Mastering JavaScript Functional Programming",
-            image: "https://images-na.ssl-images-amazon.com/images/I/51WAikRq37L._SX218_BO1,204,203,200_QL40_FMwebp_.jpg",
-            author: "Federico Kereki"
+            title: "12 Angry Men",
+            Description: "The jury in a New York City murder trial is frustrated by a single member whose skeptical caution forces them to more carefully consider the evidence before jumping to a hasty verdict.",
+            genre: {
+                Name: "Drama",
+                Description: "In film and television, drama is a category or genre of narrative fiction intended to be more serious than humorous in tone."
+            },
+            image: "https://upload.wikimedia.org/wikipedia/commons/thumb/b/b5/12_Angry_Men_%281957_film_poster%29.jpg/330px-12_Angry_Men_%281957_film_poster%29.jpg",
+            director: {
+                Name: "Sidney Lumet",
+                Bio: "Sidney Arthur Lumet was an American film director. He was nominated five times for the Academy Award: four for Best Director for 12 Angry Men, Dog Day Afternoon, Network, and The Verdict and one for Best Adapted Screenplay for Prince of the City.",
+                Birth: "1924",
+                Death: "2011"
+            }
         },
         {
             id: 3,
-            title: "JavaScript: The Good Parts",
-            image: "https://images-na.ssl-images-amazon.com/images/I/5131OWtQRaL._SX381_BO1,204,203,200_.jpg",
-            author: "Douglas Crockford"
-        },
-        {
-            id: 4,
-            title: "JavaScript: The Definitive Guide",
-            image: "https://images-na.ssl-images-amazon.com/images/I/51HbNW6RzhL._SX218_BO1,204,203,200_QL40_FMwebp_.jpg",
-            author: "David Flanagan"
-        },
-        {
-            id: 5,
-            title: "The Road to React",
-            image: "https://images-na.ssl-images-amazon.com/images/I/41MBLi5a4jL._SX384_BO1,204,203,200_.jpg",
-            author: "Robin Wieruch"
+            title: "The Dark Knight",
+            Description: "When the menace known as the Joker wreaks havoc and chaos on the people of Gotham, Batman must accept one of the greatest psychological and physical tests of his ability to fight injustice.",
+            genre: {
+                Name: "Action",
+                Description: "Action film is a film genre in which the protagonist is thrust into a series of events that typically involve violence and physical feats."
+            },
+            image: "https://upload.wikimedia.org/wikipedia/en/1/1c/The_Dark_Knight_%282008_film%29.jpg",
+            director: {
+                Name: "Christopher Nolan",
+                Bio: "Christopher Edward Nolan CBE is a British-American filmmaker. Known for his Hollywood blockbusters with complex storytelling, Nolan is considered a leading filmmaker of the 21st century. His films have grossed $5 billion worldwide.",
+                Birth: "1970",
+                Death: null
+            }
         }
     ]);
     const [selectedMovie, setSelectedMovie] = (0, _react.useState)(null);
@@ -27328,14 +27346,14 @@ const MainView = ()=>{
         onBackClick: ()=>setSelectedMovie(null)
     }, void 0, false, {
         fileName: "src/components/main-view/main-view.jsx",
-        lineNumber: 48,
+        lineNumber: 70,
         columnNumber: 7
     }, undefined);
     if (movies.length === 0) return /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
         children: "The list is empty!"
     }, void 0, false, {
         fileName: "src/components/main-view/main-view.jsx",
-        lineNumber: 56,
+        lineNumber: 78,
         columnNumber: 12
     }, undefined);
     return /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
@@ -27347,7 +27365,7 @@ const MainView = ()=>{
                 children: "Click me!"
             }, void 0, false, {
                 fileName: "src/components/main-view/main-view.jsx",
-                lineNumber: 61,
+                lineNumber: 83,
                 columnNumber: 7
             }, undefined),
             movies.map((movie)=>{
@@ -27358,18 +27376,18 @@ const MainView = ()=>{
                     }
                 }, movie.id, false, {
                     fileName: "src/components/main-view/main-view.jsx",
-                    lineNumber: 70,
+                    lineNumber: 92,
                     columnNumber: 11
                 }, undefined);
             })
         ]
     }, void 0, true, {
         fileName: "src/components/main-view/main-view.jsx",
-        lineNumber: 60,
+        lineNumber: 82,
         columnNumber: 5
     }, undefined);
 };
-_s(MainView, "3vkX5BJJOuaUiYbMo/h0f1imTV8=");
+_s(MainView, "42uexpFSumuR2BvPyDzq1Lwc370=");
 _c = MainView;
 var _c;
 $RefreshReg$(_c, "MainView");
