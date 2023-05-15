@@ -21,14 +21,9 @@
     "bootstrap": "^5.2.3",
     "prop-types": "^15.8.1",
     "react": "^18.2.0",
-<<<<<<< HEAD
     "react-dom": "^18.2.0",
     "react-router": "^6.11.1",
     "react-router-dom": "^6.11.1"
-=======
-    "react-bootstrap": "^2.7.4",
-    "react-dom": "^18.2.0"
->>>>>>> a689a5a889effe893eb3a406bf78dcbc657a6f7a
   },
   "devDependencies": {
     "@parcel/transformer-sass": "^2.8.3",
