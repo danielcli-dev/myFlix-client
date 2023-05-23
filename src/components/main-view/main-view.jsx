@@ -34,7 +34,7 @@ export const MainView = () => {
       });
       setSearchMovies(filteredMovies);
     }
-  }, [movies]);
+  }, [searchTerm]);
 
   // useEffect is for updating movies time the token is updated
   useEffect(() => {
