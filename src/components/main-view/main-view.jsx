@@ -3,7 +3,7 @@ import { MovieCard } from "../movie-card/movie-card";
 import { MovieView } from "../movie-view/movie-view";
 import { LoginView } from "../login-view/login-view";
 import { SignupView } from "../signup-view/signup-view";
-import { Row, Col, Button } from "react-bootstrap";
+import { Container, Row, Col, Button, Form } from "react-bootstrap";
 import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
 import { NavigationBar } from "../navigation-bar/navigation-bar";
 import { ProfileView } from "../profile-view/profile-view";
@@ -14,6 +14,8 @@ export const MainView = () => {
   const [user, setUser] = useState(storedUser ? storedUser : null);
   const [token, setToken] = useState(storedToken ? storedToken : null);
   const [movies, setMovies] = useState([]);
+  const [searchTerm, setSearchTerm] = useState("");
+  const [searchMovies, setSearchMovies] = useState([]);
   const [favorites, setFavorites] = useState(
     storedUser ? storedUser.FavoriteMovies : null
   );
@@ -22,6 +24,17 @@ export const MainView = () => {
   useEffect(() => {
     setFavoritesList(movies.filter((m) => favorites.includes(m.id)));
   }, [user, favorites]);
+
+  useEffect(() => {
+    if (movies) {
+      let filteredMovies = movies.filter((movie) => {
+        if (movie.title.toLowerCase().includes(searchTerm.toLowerCase())) {
+          return movie;
+        }
+      });
+      setSearchMovies(filteredMovies);
+    }
+  }, [movies]);
 
   // useEffect is for updating movies time the token is updated
   useEffect(() => {
@@ -208,8 +221,31 @@ export const MainView = () => {
                   <Col>The list is empty!</Col>
                 ) : (
                   <>
-                    {movies.map((movie) => (
-                      <Col xs={12} sm={6} className="mb-5" key={movie.id} md={3}>
+                    <div className="d-flex mb-3 justify-content-center">
+                      <Container>
+                        <Row className="">
+                          <Col>
+                            <Form.Group>
+                              <Form.Control
+                                type="text"
+                                placeholder="What movie are you searching for?"
+                                value={searchTerm}
+                                onChange={(e) => setSearchTerm(e.target.value)}
+                              />
+                            </Form.Group>
+                          </Col>
+                        </Row>
+                      </Container>
+                    </div>
+
+                    {searchMovies.map((movie) => (
+                      <Col
+                        xs={12}
+                        sm={6}
+                        className="mb-5"
+                        key={movie.id}
+                        md={3}
+                      >
                         <MovieCard
                           movie={movie}
                           addFavoriteMovie={addFavoriteMovie}
