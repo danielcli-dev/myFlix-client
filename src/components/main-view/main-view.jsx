@@ -72,6 +72,14 @@ export const MainView = () => {
     localStorage.clear();
   };
 
+  const toggleFavoriteMovie = (movie) => {
+    if (favorites.includes(movie.id)) {
+      removeFavorite(movie.id);
+    } else {
+      addFavoriteMovie(movie.id);
+    }
+  };
+
   const addFavoriteMovie = (movie) => {
     fetch(
       `https://cfdb-movie-api.herokuapp.com/users/${user.Username}/add/${movie}`,
@@ -249,7 +257,8 @@ export const MainView = () => {
                       >
                         <MovieCard
                           movie={movie}
-                          addFavoriteMovie={addFavoriteMovie}
+                          toggleFavoriteMovie={toggleFavoriteMovie}
+                          favorites={favorites}
                         />
                       </Col>
                     ))}
