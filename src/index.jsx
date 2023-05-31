@@ -7,7 +7,7 @@ import "./index.scss";
 const App = () => {
   return (
     <Container fluid className="px-0">
-      <MainView className=""/>
+      <MainView/>
     </Container>
   );
 };
