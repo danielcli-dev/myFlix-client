@@ -20,10 +20,15 @@ export const MainView = () => {
     storedUser ? storedUser.FavoriteMovies : null
   );
   const [favoritesList, setFavoritesList] = useState([]);
+  const [hasLoaded, setHasLoaded] = useState(false);
+
+  useEffect(() => {
+    refreshUser();
+  }, []);
 
   useEffect(() => {
     setFavoritesList(movies.filter((m) => favorites.includes(m.id)));
-  }, [user, favorites]);
+  }, [movies, favorites]);
 
   useEffect(() => {
     if (movies) {
@@ -34,7 +39,7 @@ export const MainView = () => {
       });
       setSearchMovies(filteredMovies);
     }
-  }, [searchTerm]);
+  }, [movies, searchTerm]);
 
   // useEffect is for updating movies time the token is updated
   useEffect(() => {
@@ -62,7 +67,8 @@ export const MainView = () => {
           };
         });
         setMovies(moviesFromApi);
-        setSearchMovies(moviesFromApi);
+        // setSearchMovies(moviesFromApi);
+        setHasLoaded(true);
       });
   }, [token]);
 
@@ -190,7 +196,11 @@ export const MainView = () => {
                   <Col>The list is empty!</Col>
                 ) : (
                   <Col>
-                    <MovieView movies={movies} />
+                    <MovieView
+                      movies={movies}
+                      favorites={favorites}
+                      toggleFavoriteMovie={toggleFavoriteMovie}
+                    />
                   </Col>
                 )}
               </>
@@ -213,6 +223,7 @@ export const MainView = () => {
                         favoritesList={favoritesList}
                         onLoggedOut={onLoggedOut}
                         removeFavorite={removeFavorite}
+                        toggleFavoriteMovie={toggleFavoriteMovie}
                       />
                     </Col>
                   </>
@@ -226,13 +237,13 @@ export const MainView = () => {
               <>
                 {!user ? (
                   <Navigate to="/login" replace />
-                ) : movies.length === 0 ? (
+                ) : hasLoaded && movies.length === 0 ? (
                   <Col>The list is empty!</Col>
                 ) : (
                   <>
                     <div className="d-flex mb-3 justify-content-center">
                       <Container>
-                        <Row className="">
+                        <Row>
                           <Col>
                             <Form.Group>
                               <Form.Control
