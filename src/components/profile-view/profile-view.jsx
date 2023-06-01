@@ -1,7 +1,16 @@
 import { useState, useEffect } from "react";
 import { useParams } from "react-router";
-import { Button, Card, Col, ListGroup, Form } from "react-bootstrap";
+import {
+  Button,
+  Card,
+  Col,
+  ListGroup,
+  Form,
+  Row,
+  Container,
+} from "react-bootstrap";
 import { Link, Navigate, Redirect } from "react-router-dom";
+import { MovieCard } from "../movie-card/movie-card";
 
 export const ProfileView = ({
   user,
@@ -12,6 +21,7 @@ export const ProfileView = ({
   favoritesList,
   refreshUser,
   removeFavorite,
+  toggleFavoriteMovie,
 }) => {
   const [username, setUsername] = useState(user.Username);
   const [password, setPassword] = useState("");
@@ -132,28 +142,27 @@ export const ProfileView = ({
           <Card.Text>Birthday: {user.Birthday}</Card.Text>
           <Card.Text>Favorite Movies: </Card.Text>
           <ListGroup as="ul">
-            {favoritesList.map((movie) => {
-              return (
-                <>
-                  <ListGroup.Item
-                    className="d-flex justify-content-between mb-2 align-items-center"
-                    as="li"
+            <Row className="justify-content-center">
+              {favoritesList.map((movie) => {
+                return (
+                  <Col
+                    xs={12}
+                    sm={8}
+                    md={6}
+                    lg={4}
+                    xl={3}
+                    className="mb-4"
                     key={movie.id}
                   >
-                    {movie.title}
-                    <Button
-                      onClick={() => {
-                        removeFavorite(movie.id);
-                      }}
-                      variant="danger"
-                      key={movie.id}
-                    >
-                      X
-                    </Button>
-                  </ListGroup.Item>
-                </>
-              );
-            })}
+                    <MovieCard
+                      movie={movie}
+                      toggleFavoriteMovie={toggleFavoriteMovie}
+                      favorites={favorites}
+                    />
+                  </Col>
+                );
+              })}
+            </Row>
           </ListGroup>
         </Card.Body>
       </Card>
