@@ -1,11 +1,12 @@
 import { useParams } from "react-router";
 import { Link } from "react-router-dom";
 import { Col, Row, Button } from "react-bootstrap";
+import { useSelector } from "react-redux";
 import "./movie-view.scss";
 
-export const MovieView = ({ movies, favorites, toggleFavoriteMovie }) => {
+export const MovieView = ({ favorites, toggleFavoriteMovie }) => {
   const { movieId } = useParams();
-
+  const movies = useSelector((state) => state.movies.list);
   const movie = movies.find((b) => b.id == movieId);
 
   return (

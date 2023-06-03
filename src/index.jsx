@@ -3,12 +3,16 @@ import MainView from "./components/main-view/main-view";
 import { Container } from "react-bootstrap";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "./index.scss";
+import { store } from "./redux/store";
+import { Provider } from "react-redux";
 
 const App = () => {
   return (
-    <Container fluid className="px-0">
-      <MainView/>
-    </Container>
+    <Provider store={store}>
+      <Container fluid className="px-0">
+        <MainView />
+      </Container>
+    </Provider>
   );
 };
 
