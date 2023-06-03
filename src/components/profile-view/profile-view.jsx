@@ -15,7 +15,6 @@ import { MovieCard } from "../movie-card/movie-card";
 export const ProfileView = ({
   user,
   token,
-  movies,
   onLoggedOut,
   favorites,
   favoritesList,

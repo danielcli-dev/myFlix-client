@@ -7,20 +7,35 @@ import { Container, Row, Col, Button, Form } from "react-bootstrap";
 import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
 import { NavigationBar } from "../navigation-bar/navigation-bar";
 import { ProfileView } from "../profile-view/profile-view";
+import { useSelector, useDispatch } from "react-redux";
+import { setMovies, setSearchTerm } from "../../redux/reducers/movies";
+import { setUser, setToken } from "../../redux/reducers/user";
 
 export const MainView = () => {
-  const storedUser = JSON.parse(localStorage.getItem("user"));
-  const storedToken = localStorage.getItem("token");
+  const storedUser = localStorage.getItem("user")
+    ? JSON.parse(localStorage.getItem("user"))
+    : {};
+  const storedToken = localStorage.getItem("token")
+    ? localStorage.getItem("token")
+    : "";
+
+  // const user = useSelector((state) => state.user);
+
   const [user, setUser] = useState(storedUser ? storedUser : null);
+
+  // const token = useSelector((state) => state.user.token);
   const [token, setToken] = useState(storedToken ? storedToken : null);
-  const [movies, setMovies] = useState([]);
-  const [searchTerm, setSearchTerm] = useState("");
+
+  const movies = useSelector((state) => state.movies.list);
+  const searchTerm = useSelector((state) => state.movies.searchTerm);
   const [searchMovies, setSearchMovies] = useState([]);
   const [favorites, setFavorites] = useState(
     storedUser ? storedUser.FavoriteMovies : null
+    // user ? user.FavoriteMovies : []
   );
   const [favoritesList, setFavoritesList] = useState([]);
   const [hasLoaded, setHasLoaded] = useState(false);
+  const dispatch = useDispatch();
 
   useEffect(() => {
     refreshUser();
@@ -66,7 +81,8 @@ export const MainView = () => {
             featured: doc.Featured,
           };
         });
-        setMovies(moviesFromApi);
+        // setMovies(moviesFromApi);
+        dispatch(setMovies(moviesFromApi));
         // setSearchMovies(moviesFromApi);
         setHasLoaded(true);
       });
@@ -75,6 +91,8 @@ export const MainView = () => {
   const onLoggedOut = () => {
     setUser(null);
     setToken(null);
+    // dispatch(setUser(""));
+    // dispatch(setToken(""));
     localStorage.clear();
   };
 
@@ -103,6 +121,24 @@ export const MainView = () => {
       }
     });
   };
+
+  // const addFavoriteMovie = (movie) => {
+  //   fetch(
+  //     `https://cfdb-movie-api.herokuapp.com/users/${user.Username}/add/${movie}`,
+  //     {
+  //       method: "POST",
+  //       headers: {
+  //         Authorization: `Bearer ${token}`,
+  //       },
+  //     }
+  //   ).then((response) => {
+  //     if (response.ok) {
+  //       refreshUser();
+  //     } else {
+  //       alert("Failed to remove movie");
+  //     }
+  //   });
+  // };
 
   const removeFavorite = (movie) => {
     fetch(
@@ -135,14 +171,13 @@ export const MainView = () => {
       .then((response) => response.json())
       .then((data) => {
         if (data) {
-          setUser(data);
           setFavorites(data.FavoriteMovies);
         } else {
           alert("Failed to refresh user");
         }
       })
       .catch((e) => {
-        alert("Something went wrong");
+        alert("Something went wrong with refreshUser");
       });
   };
 
@@ -175,10 +210,10 @@ export const MainView = () => {
                 ) : (
                   <Col md={5}>
                     <LoginView
-                      onLoggedIn={(user, token) => {
-                        setUser(user);
-                        setToken(token);
-                      }}
+                    // onLoggedIn={(user, token) => {
+                    //   dispatch(setUser(user));
+                    //   dispatch(setToken(token));
+                    // }}
                     />
                   </Col>
                 )}
@@ -218,7 +253,6 @@ export const MainView = () => {
                       <ProfileView
                         user={user}
                         token={token}
-                        movies={movies}
                         favorites={favorites}
                         favoritesList={favoritesList}
                         onLoggedOut={onLoggedOut}
@@ -245,13 +279,16 @@ export const MainView = () => {
                       <Container>
                         <Row>
                           <Col>
-                            <Form.Group>
+                            <Form.Group className="d-flex flex-row">
                               <Form.Control
                                 type="text"
                                 placeholder="What movie are you searching for?"
                                 value={searchTerm}
-                                onChange={(e) => setSearchTerm(e.target.value)}
+                                onChange={(e) =>
+                                  dispatch(setSearchTerm(e.target.value))
+                                }
                               />
+                              <Button className="rounded">X</Button>
                             </Form.Group>
                           </Col>
                         </Row>
