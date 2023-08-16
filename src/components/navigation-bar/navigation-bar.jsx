@@ -11,7 +11,7 @@ export const NavigationBar = ({ user }) => {
     <Navbar className="bg-primary text-white" expand="lg">
       <Container fluid className="px-3">
         <Navbar.Brand className="text-white" as={Link} to="/">
-          myFlix
+          myFlix Test
         </Navbar.Brand>
         <Navbar.Toggle aria-controls="basic-navbar-nav" />
         <Navbar.Collapse id="basic-navbar-nav">
