@@ -27186,7 +27186,7 @@ const MainView = ()=>{
     const storedUser = localStorage.getItem("user") ? JSON.parse(localStorage.getItem("user")) : {};
     const storedToken = localStorage.getItem("token") ? localStorage.getItem("token") : "";
     // const user = useSelector((state) => state.user);
-    const [user, setUser] = (0, _react.useState)(storedUser ? storedUser : null);
+    const [user, setUser] = (0, _react.useState)(storedUser ? storedUser : {});
     // const token = useSelector((state) => state.user.token);
     const [token, setToken] = (0, _react.useState)(storedToken ? storedToken : null);
     const movies = (0, _reactRedux.useSelector)((state)=>state.movies.list);
@@ -27316,7 +27316,7 @@ const MainView = ()=>{
                 onLoggedOut: onLoggedOut
             }, void 0, false, {
                 fileName: "src/components/main-view/main-view.jsx",
-                lineNumber: 187,
+                lineNumber: 190,
                 columnNumber: 7
             }, undefined),
             /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactBootstrap.Row), {
@@ -27338,7 +27338,7 @@ const MainView = ()=>{
                             }, void 0, true)
                         }, void 0, false, {
                             fileName: "src/components/main-view/main-view.jsx",
-                            lineNumber: 190,
+                            lineNumber: 193,
                             columnNumber: 11
                         }, undefined),
                         /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactRouterDom.Route), {
@@ -27353,7 +27353,7 @@ const MainView = ()=>{
                             }, void 0, false)
                         }, void 0, false, {
                             fileName: "src/components/main-view/main-view.jsx",
-                            lineNumber: 205,
+                            lineNumber: 208,
                             columnNumber: 11
                         }, undefined),
                         /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactRouterDom.Route), {
@@ -27374,7 +27374,7 @@ const MainView = ()=>{
                             }, void 0, false)
                         }, void 0, false, {
                             fileName: "src/components/main-view/main-view.jsx",
-                            lineNumber: 225,
+                            lineNumber: 228,
                             columnNumber: 11
                         }, undefined),
                         /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactRouterDom.Route), {
@@ -27401,7 +27401,7 @@ const MainView = ()=>{
                             }, void 0, false)
                         }, void 0, false, {
                             fileName: "src/components/main-view/main-view.jsx",
-                            lineNumber: 245,
+                            lineNumber: 248,
                             columnNumber: 11
                         }, undefined),
                         /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactRouterDom.Route), {
@@ -27454,28 +27454,28 @@ const MainView = ()=>{
                             }, void 0, false)
                         }, void 0, false, {
                             fileName: "src/components/main-view/main-view.jsx",
-                            lineNumber: 269,
+                            lineNumber: 272,
                             columnNumber: 11
                         }, undefined)
                     ]
                 }, void 0, true, {
                     fileName: "src/components/main-view/main-view.jsx",
-                    lineNumber: 189,
+                    lineNumber: 192,
                     columnNumber: 9
                 }, undefined)
             }, void 0, false, {
                 fileName: "src/components/main-view/main-view.jsx",
-                lineNumber: 188,
+                lineNumber: 191,
                 columnNumber: 7
             }, undefined)
         ]
     }, void 0, true, {
         fileName: "src/components/main-view/main-view.jsx",
-        lineNumber: 186,
+        lineNumber: 189,
         columnNumber: 5
     }, undefined);
 };
-_s(MainView, "7+3HyDrzmZMcOMVEibIBl5fkZqw=", false, function() {
+_s(MainView, "zcatkgqB4H+IfZQKhtRAkcs8h5Y=", false, function() {
     return [
         (0, _reactRedux.useSelector),
         (0, _reactRedux.useSelector),
@@ -52611,7 +52611,7 @@ const NavigationBar = ({ user  })=>{
                     className: "text-white",
                     as: (0, _reactRouterDom.Link),
                     to: "/",
-                    children: "myFlix Test"
+                    children: "myFlix"
                 }, void 0, false, {
                     fileName: "src/components/navigation-bar/navigation-bar.jsx",
                     lineNumber: 13,

@@ -21,7 +21,7 @@ export const MainView = () => {
 
   // const user = useSelector((state) => state.user);
 
-  const [user, setUser] = useState(storedUser ? storedUser : null);
+  const [user, setUser] = useState(storedUser ? storedUser : {});
 
   // const token = useSelector((state) => state.user.token);
   const [token, setToken] = useState(storedToken ? storedToken : null);
@@ -164,11 +164,14 @@ export const MainView = () => {
 
   const refreshUser = () => {
     // fetch(`https://cfdb-movie-api.herokuapp.com/users/${user.Username}`, {
-    fetch(`https://cfdb-movie-api-59ec69f25db6.herokuapp.com/users/${user.Username}`, {
-      headers: {
-        Authorization: `Bearer ${token}`,
-      },
-    })
+    fetch(
+      `https://cfdb-movie-api-59ec69f25db6.herokuapp.com/users/${user.Username}`,
+      {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      }
+    )
       .then((response) => response.json())
       .then((data) => {
         if (data) {
