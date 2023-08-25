@@ -163,7 +163,8 @@ export const MainView = () => {
   };
 
   const refreshUser = () => {
-    fetch(`https://cfdb-movie-api.herokuapp.com/users/${user.Username}`, {
+    // fetch(`https://cfdb-movie-api.herokuapp.com/users/${user.Username}`, {
+    fetch(`https://cfdb-movie-api-59ec69f25db6.herokuapp.com/users/${user.Username}`, {
       headers: {
         Authorization: `Bearer ${token}`,
       },
