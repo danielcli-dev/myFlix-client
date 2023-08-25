@@ -62,7 +62,7 @@ export const MainView = () => {
       return;
     }
 
-    fetch("https://cfdb-movie-api.herokuapp.com/movies", {
+    fetch("https://cfdb-movie-api-59ec69f25db6.herokuapp.com/movies", {
       headers: {
         Authorization: `Bearer ${token}`,
       },
@@ -106,7 +106,7 @@ export const MainView = () => {
 
   const addFavoriteMovie = (movie) => {
     fetch(
-      `https://cfdb-movie-api.herokuapp.com/users/${user.Username}/add/${movie}`,
+      `https://cfdb-movie-api-59ec69f25db6.herokuapp.com/users/${user.Username}/add/${movie}`,
       {
         method: "POST",
         headers: {
