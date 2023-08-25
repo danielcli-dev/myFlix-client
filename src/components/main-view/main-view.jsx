@@ -21,8 +21,8 @@ export const MainView = () => {
 
   // const user = useSelector((state) => state.user);
 
-  // const [user, setUser] = useState(storedUser ? storedUser : null);
-  const [user, setUser] = useState(null);
+  const [user, setUser] = useState(storedUser ? storedUser : null);
+  // const [user, setUser] = useState(null);
 
   // const token = useSelector((state) => state.user.token);
   const [token, setToken] = useState(storedToken ? storedToken : null);
@@ -39,7 +39,7 @@ export const MainView = () => {
   const dispatch = useDispatch();
 
   useEffect(() => {
-    // refreshUser();
+    refreshUser();
   }, []);
 
   useEffect(() => {
