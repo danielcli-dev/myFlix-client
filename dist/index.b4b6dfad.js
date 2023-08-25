@@ -27186,7 +27186,7 @@ const MainView = ()=>{
     const storedUser = localStorage.getItem("user") ? JSON.parse(localStorage.getItem("user")) : {};
     const storedToken = localStorage.getItem("token") ? localStorage.getItem("token") : "";
     // const user = useSelector((state) => state.user);
-    const [user, setUser] = (0, _react.useState)(storedUser ? storedUser : {});
+    const [user, setUser] = (0, _react.useState)(storedUser ? storedUser : null);
     // const token = useSelector((state) => state.user.token);
     const [token, setToken] = (0, _react.useState)(storedToken ? storedToken : null);
     const movies = (0, _reactRedux.useSelector)((state)=>state.movies.list);
@@ -27197,7 +27197,7 @@ const MainView = ()=>{
     const [hasLoaded, setHasLoaded] = (0, _react.useState)(false);
     const dispatch = (0, _reactRedux.useDispatch)();
     (0, _react.useEffect)(()=>{
-        refreshUser();
+    // refreshUser();
     }, []);
     (0, _react.useEffect)(()=>{
         setFavoritesList(movies.filter((m)=>favorites.includes(m.id)));
@@ -27475,7 +27475,7 @@ const MainView = ()=>{
         columnNumber: 5
     }, undefined);
 };
-_s(MainView, "zcatkgqB4H+IfZQKhtRAkcs8h5Y=", false, function() {
+_s(MainView, "7+3HyDrzmZMcOMVEibIBl5fkZqw=", false, function() {
     return [
         (0, _reactRedux.useSelector),
         (0, _reactRedux.useSelector),
