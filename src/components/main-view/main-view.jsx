@@ -39,9 +39,7 @@ export const MainView = () => {
   const dispatch = useDispatch();
 
   useEffect(() => {
-    if (user) {
       refreshUser();
-    }
   }, []);
 
   useEffect(() => {
