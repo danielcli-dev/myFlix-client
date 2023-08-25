@@ -14,7 +14,7 @@ export const LoginView = () => {
 
     const data = { Username: username, Password: password };
 
-    fetch("https://cfdb-movie-api.herokuapp.com/login", {
+    fetch("https://cfdb-movie-api-59ec69f25db6.herokuapp.com/login", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",

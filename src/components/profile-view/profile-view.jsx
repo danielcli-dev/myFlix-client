@@ -36,7 +36,7 @@ export const ProfileView = ({
       Birthday: birthday,
     };
 
-    fetch(`https://cfdb-movie-api.herokuapp.com/users/${user.Username}`, {
+    fetch(`https://cfdb-movie-api-59ec69f25db6.herokuapp.com/users/${user.Username}`, {
       method: "PUT",
       body: JSON.stringify(data),
       headers: {
@@ -57,7 +57,7 @@ export const ProfileView = ({
     event.preventDefault();
 
     fetch(
-      `https://cfdb-movie-api.herokuapp.com/users/${user.Username}/deregister`,
+      `https://cfdb-movie-api-59ec69f25db6.herokuapp.com/users/${user.Username}/deregister`,
       {
         method: "DELETE",
         headers: {

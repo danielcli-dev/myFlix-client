@@ -142,7 +142,7 @@ export const MainView = () => {
 
   const removeFavorite = (movie) => {
     fetch(
-      `https://cfdb-movie-api.herokuapp.com/users/${user.Username}/remove/${movie}`,
+      `https://cfdb-movie-api-59ec69f25db6.herokuapp.com/users/${user.Username}/remove/${movie}`,
       {
         method: "DELETE",
         headers: {
