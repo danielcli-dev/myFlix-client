@@ -27183,7 +27183,7 @@ var _user = require("../../redux/reducers/user");
 var _s = $RefreshSig$();
 const MainView = ()=>{
     _s();
-    const storedUser = localStorage.getItem("user") ? JSON.parse(localStorage.getItem("user")) : {};
+    const storedUser = localStorage.getItem("user") ? JSON.parse(localStorage.getItem("user")) : null;
     const storedToken = localStorage.getItem("token") ? localStorage.getItem("token") : "";
     // const user = useSelector((state) => state.user);
     const [user, setUser] = (0, _react.useState)(storedUser ? storedUser : null);

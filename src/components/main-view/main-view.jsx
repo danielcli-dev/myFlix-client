@@ -14,7 +14,7 @@ import { setUser, setToken } from "../../redux/reducers/user";
 export const MainView = () => {
   const storedUser = localStorage.getItem("user")
     ? JSON.parse(localStorage.getItem("user"))
-    : {};
+    : null;
   const storedToken = localStorage.getItem("token")
     ? localStorage.getItem("token")
     : "";
