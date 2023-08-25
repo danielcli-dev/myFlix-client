@@ -14,7 +14,7 @@ import { setUser, setToken } from "../../redux/reducers/user";
 export const MainView = () => {
   const storedUser = localStorage.getItem("user")
     ? JSON.parse(localStorage.getItem("user"))
-    : {};
+    : "";
   const storedToken = localStorage.getItem("token")
     ? localStorage.getItem("token")
     : "";
@@ -39,7 +39,9 @@ export const MainView = () => {
   const dispatch = useDispatch();
 
   useEffect(() => {
-    refreshUser();
+    if (user) {
+      refreshUser();
+    }
   }, []);
 
   useEffect(() => {

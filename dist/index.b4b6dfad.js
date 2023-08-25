@@ -27183,7 +27183,7 @@ var _user = require("../../redux/reducers/user");
 var _s = $RefreshSig$();
 const MainView = ()=>{
     _s();
-    const storedUser = localStorage.getItem("user") ? JSON.parse(localStorage.getItem("user")) : {};
+    const storedUser = localStorage.getItem("user") ? JSON.parse(localStorage.getItem("user")) : "";
     const storedToken = localStorage.getItem("token") ? localStorage.getItem("token") : "";
     // const user = useSelector((state) => state.user);
     const [user, setUser] = (0, _react.useState)(storedUser ? storedUser : null);
@@ -27198,7 +27198,7 @@ const MainView = ()=>{
     const [hasLoaded, setHasLoaded] = (0, _react.useState)(false);
     const dispatch = (0, _reactRedux.useDispatch)();
     (0, _react.useEffect)(()=>{
-        refreshUser();
+        if (user) refreshUser();
     }, []);
     (0, _react.useEffect)(()=>{
         setFavoritesList(movies.filter((m)=>favorites.includes(m.id)));
@@ -27317,7 +27317,7 @@ const MainView = ()=>{
                 onLoggedOut: onLoggedOut
             }, void 0, false, {
                 fileName: "src/components/main-view/main-view.jsx",
-                lineNumber: 191,
+                lineNumber: 193,
                 columnNumber: 7
             }, undefined),
             /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactBootstrap.Row), {
@@ -27339,7 +27339,7 @@ const MainView = ()=>{
                             }, void 0, true)
                         }, void 0, false, {
                             fileName: "src/components/main-view/main-view.jsx",
-                            lineNumber: 194,
+                            lineNumber: 196,
                             columnNumber: 11
                         }, undefined),
                         /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactRouterDom.Route), {
@@ -27354,7 +27354,7 @@ const MainView = ()=>{
                             }, void 0, false)
                         }, void 0, false, {
                             fileName: "src/components/main-view/main-view.jsx",
-                            lineNumber: 209,
+                            lineNumber: 211,
                             columnNumber: 11
                         }, undefined),
                         /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactRouterDom.Route), {
@@ -27375,7 +27375,7 @@ const MainView = ()=>{
                             }, void 0, false)
                         }, void 0, false, {
                             fileName: "src/components/main-view/main-view.jsx",
-                            lineNumber: 229,
+                            lineNumber: 231,
                             columnNumber: 11
                         }, undefined),
                         /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactRouterDom.Route), {
@@ -27402,7 +27402,7 @@ const MainView = ()=>{
                             }, void 0, false)
                         }, void 0, false, {
                             fileName: "src/components/main-view/main-view.jsx",
-                            lineNumber: 249,
+                            lineNumber: 251,
                             columnNumber: 11
                         }, undefined),
                         /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactRouterDom.Route), {
@@ -27455,24 +27455,24 @@ const MainView = ()=>{
                             }, void 0, false)
                         }, void 0, false, {
                             fileName: "src/components/main-view/main-view.jsx",
-                            lineNumber: 273,
+                            lineNumber: 275,
                             columnNumber: 11
                         }, undefined)
                     ]
                 }, void 0, true, {
                     fileName: "src/components/main-view/main-view.jsx",
-                    lineNumber: 193,
+                    lineNumber: 195,
                     columnNumber: 9
                 }, undefined)
             }, void 0, false, {
                 fileName: "src/components/main-view/main-view.jsx",
-                lineNumber: 192,
+                lineNumber: 194,
                 columnNumber: 7
             }, undefined)
         ]
     }, void 0, true, {
         fileName: "src/components/main-view/main-view.jsx",
-        lineNumber: 190,
+        lineNumber: 192,
         columnNumber: 5
     }, undefined);
 };
