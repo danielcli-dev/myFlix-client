@@ -110,84 +110,71 @@ export const MainView = () => {
   };
 
   const addFavoriteMovie = (movie) => {
-    fetch(
-      `https://cfdb-movie-api-59ec69f25db6.herokuapp.com/users/${user.Username}/add/${movie}`,
-      {
-        method: "POST",
-        headers: {
-          Authorization: `Bearer ${token}`,
-        },
-      }
-    ).then((response) => {
-      if (response.ok) {
-        refreshUser();
-      } else {
-        alert("Failed to remove movie");
-      }
-    });
-  };
-
-  // const addFavoriteMovie = (movie) => {
-  //   fetch(
-  //     `https://cfdb-movie-api.herokuapp.com/users/${user.Username}/add/${movie}`,
-  //     {
-  //       method: "POST",
-  //       headers: {
-  //         Authorization: `Bearer ${token}`,
-  //       },
-  //     }
-  //   ).then((response) => {
-  //     if (response.ok) {
-  //       refreshUser();
-  //     } else {
-  //       alert("Failed to remove movie");
-  //     }
-  //   });
-  // };
-
-  const removeFavorite = (movie) => {
-    fetch(
-      `https://cfdb-movie-api-59ec69f25db6.herokuapp.com/users/${user.Username}/remove/${movie}`,
-      {
-        method: "DELETE",
-        headers: {
-          Authorization: `Bearer ${token}`,
-        },
-      }
-    )
-      .then((response) => {
+    if (user) {
+      fetch(
+        `https://cfdb-movie-api-59ec69f25db6.herokuapp.com/users/${user.Username}/add/${movie}`,
+        {
+          method: "POST",
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
+        }
+      ).then((response) => {
         if (response.ok) {
           refreshUser();
         } else {
           alert("Failed to remove movie");
         }
-      })
-      .catch((err) => {
-        alert("Something went wrong");
       });
+    }
+  };
+
+  const removeFavorite = (movie) => {
+    if (user) {
+      fetch(
+        `https://cfdb-movie-api-59ec69f25db6.herokuapp.com/users/${user.Username}/remove/${movie}`,
+        {
+          method: "DELETE",
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
+        }
+      )
+        .then((response) => {
+          if (response.ok) {
+            refreshUser();
+          } else {
+            alert("Failed to remove movie");
+          }
+        })
+        .catch((err) => {
+          alert("Something went wrong");
+        });
+    }
   };
 
   const refreshUser = () => {
-    // fetch(`https://cfdb-movie-api.herokuapp.com/users/${user.Username}`, {
-    fetch(
-      `https://cfdb-movie-api-59ec69f25db6.herokuapp.com/users/${user.Username}`,
-      {
-        headers: {
-          Authorization: `Bearer ${token}`,
-        },
-      }
-    )
-      .then((response) => response.json())
-      .then((data) => {
-        if (data) {
-          setFavorites(data.FavoriteMovies);
-        } else {
-          alert("Failed to refresh user");
+    if (user) {
+      fetch(
+        `https://cfdb-movie-api-59ec69f25db6.herokuapp.com/users/${user.Username}`,
+        {
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
         }
-      })
-      .catch((e) => {
-        alert("Something went wrong with refreshUser");
-      });
+      )
+        .then((response) => response.json())
+        .then((data) => {
+          if (data) {
+            setFavorites(data.FavoriteMovies);
+          } else {
+            alert("Failed to refresh user");
+          }
+        })
+        .catch((e) => {
+          alert("Something went wrong with refreshUser");
+        });
+    }
   };
 
   return (
@@ -218,12 +205,7 @@ export const MainView = () => {
                   <Navigate to="/" />
                 ) : (
                   <Col md={5}>
-                    <LoginView
-                    // onLoggedIn={(user, token) => {
-                    //   dispatch(setUser(user));
-                    //   dispatch(setToken(token));
-                    // }}
-                    />
+                    <LoginView />
                   </Col>
                 )}
               </>
