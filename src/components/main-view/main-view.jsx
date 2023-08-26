@@ -14,7 +14,7 @@ import { setUser, setToken } from "../../redux/reducers/user";
 export const MainView = () => {
   const storedUser = localStorage.getItem("user")
     ? JSON.parse(localStorage.getItem("user"))
-    : null ;
+    : null;
   const storedToken = localStorage.getItem("token")
     ? localStorage.getItem("token")
     : "";
@@ -39,7 +39,7 @@ export const MainView = () => {
   const dispatch = useDispatch();
 
   useEffect(() => {
-      refreshUser();
+    refreshUser();
   }, []);
 
   useEffect(() => {
@@ -54,6 +54,7 @@ export const MainView = () => {
         }
       });
       setSearchMovies(filteredMovies);
+      console.log("these are the searched movies", searchMovies);
     }
   }, [movies, searchTerm]);
 
@@ -90,8 +91,10 @@ export const MainView = () => {
   }, [token]);
 
   const onLoggedOut = () => {
-    setUser(null);
-    setToken(null);
+    setUser("");
+    setToken("");
+    // setUser(null);
+    // setToken(null);
     // dispatch(setUser(""));
     // dispatch(setToken(""));
     localStorage.clear();

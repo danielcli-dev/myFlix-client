@@ -27212,6 +27212,7 @@ const MainView = ()=>{
                 if (movie.title.toLowerCase().includes(searchTerm.toLowerCase())) return movie;
             });
             setSearchMovies(filteredMovies);
+            console.log("these are the searched movies", searchMovies);
         }
     }, [
         movies,
@@ -27246,8 +27247,10 @@ const MainView = ()=>{
         token
     ]);
     const onLoggedOut = ()=>{
-        setUser(null);
-        setToken(null);
+        setUser("");
+        setToken("");
+        // setUser(null);
+        // setToken(null);
         // dispatch(setUser(""));
         // dispatch(setToken(""));
         localStorage.clear();
@@ -27317,7 +27320,7 @@ const MainView = ()=>{
                 onLoggedOut: onLoggedOut
             }, void 0, false, {
                 fileName: "src/components/main-view/main-view.jsx",
-                lineNumber: 191,
+                lineNumber: 194,
                 columnNumber: 7
             }, undefined),
             /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactBootstrap.Row), {
@@ -27339,7 +27342,7 @@ const MainView = ()=>{
                             }, void 0, true)
                         }, void 0, false, {
                             fileName: "src/components/main-view/main-view.jsx",
-                            lineNumber: 194,
+                            lineNumber: 197,
                             columnNumber: 11
                         }, undefined),
                         /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactRouterDom.Route), {
@@ -27354,7 +27357,7 @@ const MainView = ()=>{
                             }, void 0, false)
                         }, void 0, false, {
                             fileName: "src/components/main-view/main-view.jsx",
-                            lineNumber: 209,
+                            lineNumber: 212,
                             columnNumber: 11
                         }, undefined),
                         /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactRouterDom.Route), {
@@ -27375,7 +27378,7 @@ const MainView = ()=>{
                             }, void 0, false)
                         }, void 0, false, {
                             fileName: "src/components/main-view/main-view.jsx",
-                            lineNumber: 229,
+                            lineNumber: 232,
                             columnNumber: 11
                         }, undefined),
                         /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactRouterDom.Route), {
@@ -27402,7 +27405,7 @@ const MainView = ()=>{
                             }, void 0, false)
                         }, void 0, false, {
                             fileName: "src/components/main-view/main-view.jsx",
-                            lineNumber: 249,
+                            lineNumber: 252,
                             columnNumber: 11
                         }, undefined),
                         /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactRouterDom.Route), {
@@ -27455,24 +27458,24 @@ const MainView = ()=>{
                             }, void 0, false)
                         }, void 0, false, {
                             fileName: "src/components/main-view/main-view.jsx",
-                            lineNumber: 273,
+                            lineNumber: 276,
                             columnNumber: 11
                         }, undefined)
                     ]
                 }, void 0, true, {
                     fileName: "src/components/main-view/main-view.jsx",
-                    lineNumber: 193,
+                    lineNumber: 196,
                     columnNumber: 9
                 }, undefined)
             }, void 0, false, {
                 fileName: "src/components/main-view/main-view.jsx",
-                lineNumber: 192,
+                lineNumber: 195,
                 columnNumber: 7
             }, undefined)
         ]
     }, void 0, true, {
         fileName: "src/components/main-view/main-view.jsx",
-        lineNumber: 190,
+        lineNumber: 193,
         columnNumber: 5
     }, undefined);
 };
