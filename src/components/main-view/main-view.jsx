@@ -18,21 +18,13 @@ export const MainView = () => {
   const storedToken = localStorage.getItem("token")
     ? localStorage.getItem("token")
     : "";
-
-  // const user = useSelector((state) => state.user);
-
   const [user, setUser] = useState(storedUser ? storedUser : null);
-  // const [user, setUser] = useState(null);
-
-  // const token = useSelector((state) => state.user.token);
   const [token, setToken] = useState(storedToken ? storedToken : null);
-
   const movies = useSelector((state) => state.movies.list);
   const searchTerm = useSelector((state) => state.movies.searchTerm);
   const [searchMovies, setSearchMovies] = useState([]);
   const [favorites, setFavorites] = useState(
     storedUser ? storedUser.FavoriteMovies : null
-    // user ? user.FavoriteMovies : []
   );
   const [favoritesList, setFavoritesList] = useState([]);
   const [hasLoaded, setHasLoaded] = useState(false);
@@ -90,7 +82,10 @@ export const MainView = () => {
         setHasLoaded(true);
       });
   }, [token]);
-
+  const onLoggedIn = (user, token) => {
+    setUser(user);
+    setToken(token);
+  };
   const onLoggedOut = () => {
     setUser("");
     setToken("");
@@ -205,7 +200,7 @@ export const MainView = () => {
                   <Navigate to="/" />
                 ) : (
                   <Col md={5}>
-                    <LoginView />
+                    <LoginView onLoggedIn={onLoggedIn} />
                   </Col>
                 )}
               </>

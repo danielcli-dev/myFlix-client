@@ -4,7 +4,7 @@ import Form from "react-bootstrap/Form";
 import { useDispatch } from "react-redux";
 import { setUser, setToken } from "../../redux/reducers/user";
 
-export const LoginView = () => {
+export const LoginView = ({ onLoggedIn }) => {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const dispatch = useDispatch();
@@ -27,9 +27,7 @@ export const LoginView = () => {
           console.log(data);
           localStorage.setItem("user", JSON.stringify(data.user));
           localStorage.setItem("token", data.token);
-
-          // dispatch(setUser(data.user));
-          // dispatch(setToken(data.token));
+          onLoggedIn(data.user, data.token);
         } else {
           alert("No such user");
         }
