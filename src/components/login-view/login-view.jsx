@@ -24,9 +24,10 @@ export const LoginView = () => {
       .then((response) => response.json())
       .then((data) => {
         if (data.user) {
+          console.log(data);
           localStorage.setItem("user", JSON.stringify(data.user));
           localStorage.setItem("token", data.token);
-          
+
           // dispatch(setUser(data.user));
           // dispatch(setToken(data.token));
         } else {
