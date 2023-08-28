@@ -87,6 +87,7 @@ export const MainView = () => {
     setToken(token);
   };
   const onLoggedOut = () => {
+    console.log("trying to log out");
     setUser("a");
     setToken("a");
     // setUser(null);

@@ -27185,10 +27185,7 @@ const MainView = ()=>{
     _s();
     const storedUser = localStorage.getItem("user") ? JSON.parse(localStorage.getItem("user")) : null;
     const storedToken = localStorage.getItem("token") ? localStorage.getItem("token") : "";
-    // const user = useSelector((state) => state.user);
     const [user, setUser] = (0, _react.useState)(storedUser ? storedUser : null);
-    // const [user, setUser] = useState(null);
-    // const token = useSelector((state) => state.user.token);
     const [token, setToken] = (0, _react.useState)(storedToken ? storedToken : null);
     const movies = (0, _reactRedux.useSelector)((state)=>state.movies.list);
     const searchTerm = (0, _reactRedux.useSelector)((state)=>state.movies.searchTerm);
@@ -27247,9 +27244,14 @@ const MainView = ()=>{
     }, [
         token
     ]);
+    const onLoggedIn = (user, token)=>{
+        setUser(user);
+        setToken(token);
+    };
     const onLoggedOut = ()=>{
-        setUser("");
-        setToken("");
+        console.log("trying to log out");
+        setUser("a");
+        setToken("a");
         // setUser(null);
         // setToken(null);
         // dispatch(setUser(""));
@@ -27261,7 +27263,7 @@ const MainView = ()=>{
         else addFavoriteMovie(movie.id);
     };
     const addFavoriteMovie = (movie)=>{
-        fetch(`https://cfdb-movie-api-59ec69f25db6.herokuapp.com/users/${user.Username}/add/${movie}`, {
+        if (user) fetch(`https://cfdb-movie-api-59ec69f25db6.herokuapp.com/users/${user.Username}/add/${movie}`, {
             method: "POST",
             headers: {
                 Authorization: `Bearer ${token}`
@@ -27271,25 +27273,8 @@ const MainView = ()=>{
             else alert("Failed to remove movie");
         });
     };
-    // const addFavoriteMovie = (movie) => {
-    //   fetch(
-    //     `https://cfdb-movie-api.herokuapp.com/users/${user.Username}/add/${movie}`,
-    //     {
-    //       method: "POST",
-    //       headers: {
-    //         Authorization: `Bearer ${token}`,
-    //       },
-    //     }
-    //   ).then((response) => {
-    //     if (response.ok) {
-    //       refreshUser();
-    //     } else {
-    //       alert("Failed to remove movie");
-    //     }
-    //   });
-    // };
     const removeFavorite = (movie)=>{
-        fetch(`https://cfdb-movie-api-59ec69f25db6.herokuapp.com/users/${user.Username}/remove/${movie}`, {
+        if (user) fetch(`https://cfdb-movie-api-59ec69f25db6.herokuapp.com/users/${user.Username}/remove/${movie}`, {
             method: "DELETE",
             headers: {
                 Authorization: `Bearer ${token}`
@@ -27302,8 +27287,7 @@ const MainView = ()=>{
         });
     };
     const refreshUser = ()=>{
-        // fetch(`https://cfdb-movie-api.herokuapp.com/users/${user.Username}`, {
-        fetch(`https://cfdb-movie-api-59ec69f25db6.herokuapp.com/users/${user.Username}`, {
+        if (user) fetch(`https://cfdb-movie-api-59ec69f25db6.herokuapp.com/users/${user.Username}`, {
             headers: {
                 Authorization: `Bearer ${token}`
             }
@@ -27321,7 +27305,7 @@ const MainView = ()=>{
                 onLoggedOut: onLoggedOut
             }, void 0, false, {
                 fileName: "src/components/main-view/main-view.jsx",
-                lineNumber: 195,
+                lineNumber: 178,
                 columnNumber: 7
             }, undefined),
             /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactBootstrap.Row), {
@@ -27343,7 +27327,7 @@ const MainView = ()=>{
                             }, void 0, true)
                         }, void 0, false, {
                             fileName: "src/components/main-view/main-view.jsx",
-                            lineNumber: 198,
+                            lineNumber: 181,
                             columnNumber: 11
                         }, undefined),
                         /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactRouterDom.Route), {
@@ -27353,12 +27337,14 @@ const MainView = ()=>{
                                     to: "/"
                                 }, void 0, false, void 0, void 0) : /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactBootstrap.Col), {
                                     md: 5,
-                                    children: /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _loginView.LoginView), {}, void 0, false, void 0, void 0)
+                                    children: /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _loginView.LoginView), {
+                                        onLoggedIn: onLoggedIn
+                                    }, void 0, false, void 0, void 0)
                                 }, void 0, false, void 0, void 0)
                             }, void 0, false)
                         }, void 0, false, {
                             fileName: "src/components/main-view/main-view.jsx",
-                            lineNumber: 213,
+                            lineNumber: 196,
                             columnNumber: 11
                         }, undefined),
                         /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactRouterDom.Route), {
@@ -27379,7 +27365,7 @@ const MainView = ()=>{
                             }, void 0, false)
                         }, void 0, false, {
                             fileName: "src/components/main-view/main-view.jsx",
-                            lineNumber: 233,
+                            lineNumber: 211,
                             columnNumber: 11
                         }, undefined),
                         /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactRouterDom.Route), {
@@ -27406,7 +27392,7 @@ const MainView = ()=>{
                             }, void 0, false)
                         }, void 0, false, {
                             fileName: "src/components/main-view/main-view.jsx",
-                            lineNumber: 253,
+                            lineNumber: 231,
                             columnNumber: 11
                         }, undefined),
                         /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactRouterDom.Route), {
@@ -27459,24 +27445,24 @@ const MainView = ()=>{
                             }, void 0, false)
                         }, void 0, false, {
                             fileName: "src/components/main-view/main-view.jsx",
-                            lineNumber: 277,
+                            lineNumber: 255,
                             columnNumber: 11
                         }, undefined)
                     ]
                 }, void 0, true, {
                     fileName: "src/components/main-view/main-view.jsx",
-                    lineNumber: 197,
+                    lineNumber: 180,
                     columnNumber: 9
                 }, undefined)
             }, void 0, false, {
                 fileName: "src/components/main-view/main-view.jsx",
-                lineNumber: 196,
+                lineNumber: 179,
                 columnNumber: 7
             }, undefined)
         ]
     }, void 0, true, {
         fileName: "src/components/main-view/main-view.jsx",
-        lineNumber: 194,
+        lineNumber: 177,
         columnNumber: 5
     }, undefined);
 };
@@ -48394,7 +48380,7 @@ var _formDefault = parcelHelpers.interopDefault(_form);
 var _reactRedux = require("react-redux");
 var _user = require("../../redux/reducers/user");
 var _s = $RefreshSig$();
-const LoginView = ()=>{
+const LoginView = ({ onLoggedIn  })=>{
     _s();
     const [username, setUsername] = (0, _react.useState)("");
     const [password, setPassword] = (0, _react.useState)("");
@@ -48413,10 +48399,10 @@ const LoginView = ()=>{
             body: JSON.stringify(data)
         }).then((response)=>response.json()).then((data)=>{
             if (data.user) {
+                console.log(data);
                 localStorage.setItem("user", JSON.stringify(data.user));
                 localStorage.setItem("token", data.token);
-            // dispatch(setUser(data.user));
-            // dispatch(setToken(data.token));
+                onLoggedIn(data.user, data.token);
             } else alert("No such user");
         }).catch((e)=>{
             alert("Something went wrong");
@@ -48432,7 +48418,7 @@ const LoginView = ()=>{
                         children: "Username:"
                     }, void 0, false, {
                         fileName: "src/components/login-view/login-view.jsx",
-                        lineNumber: 44,
+                        lineNumber: 43,
                         columnNumber: 9
                     }, undefined),
                     /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _formDefault.default).Control, {
@@ -48443,13 +48429,13 @@ const LoginView = ()=>{
                         minLength: 6
                     }, void 0, false, {
                         fileName: "src/components/login-view/login-view.jsx",
-                        lineNumber: 45,
+                        lineNumber: 44,
                         columnNumber: 9
                     }, undefined)
                 ]
             }, void 0, true, {
                 fileName: "src/components/login-view/login-view.jsx",
-                lineNumber: 43,
+                lineNumber: 42,
                 columnNumber: 7
             }, undefined),
             /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _formDefault.default).Group, {
@@ -48458,7 +48444,7 @@ const LoginView = ()=>{
                         children: "Password:"
                     }, void 0, false, {
                         fileName: "src/components/login-view/login-view.jsx",
-                        lineNumber: 55,
+                        lineNumber: 54,
                         columnNumber: 9
                     }, undefined),
                     /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _formDefault.default).Control, {
@@ -48468,13 +48454,13 @@ const LoginView = ()=>{
                         required: true
                     }, void 0, false, {
                         fileName: "src/components/login-view/login-view.jsx",
-                        lineNumber: 56,
+                        lineNumber: 55,
                         columnNumber: 9
                     }, undefined)
                 ]
             }, void 0, true, {
                 fileName: "src/components/login-view/login-view.jsx",
-                lineNumber: 54,
+                lineNumber: 53,
                 columnNumber: 7
             }, undefined),
             /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _buttonDefault.default), {
@@ -48484,13 +48470,13 @@ const LoginView = ()=>{
                 children: "Submit"
             }, void 0, false, {
                 fileName: "src/components/login-view/login-view.jsx",
-                lineNumber: 63,
+                lineNumber: 62,
                 columnNumber: 7
             }, undefined)
         ]
     }, void 0, true, {
         fileName: "src/components/login-view/login-view.jsx",
-        lineNumber: 42,
+        lineNumber: 41,
         columnNumber: 5
     }, undefined);
 };
@@ -48513,12 +48499,6 @@ var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
 parcelHelpers.defineInteropFlag(exports);
 parcelHelpers.export(exports, "setUser", ()=>setUser);
 var _toolkit = require("@reduxjs/toolkit");
-// const storedUser = localStorage.getItem("user")
-//   ? JSON.parse(localStorage.getItem("user"))
-//   : {};
-// const storedToken = localStorage.getItem("token")
-//   ? localStorage.getItem("token")
-//   : "";
 const userSlice = (0, _toolkit.createSlice)({
     name: "user",
     initialState: null,
@@ -52447,7 +52427,7 @@ const SignupView = ()=>{
         }).then((response)=>{
             if (response.ok) {
                 alert("Signup successful");
-                window.location.reload();
+                window.location.href = "../index.html";
             } else alert("Signup failed");
         });
     };
@@ -52601,7 +52581,7 @@ var _reactRouterDom = require("react-router-dom");
 var _reactRedux = require("react-redux");
 var _user = require("../../redux/reducers/user");
 var _s = $RefreshSig$();
-const NavigationBar = ({ user  })=>{
+const NavigationBar = ({ user , onLoggedOut  })=>{
     _s();
     // const user = useSelector((state) => state.user);
     const dispatch = (0, _reactRedux.useDispatch)();
@@ -52690,7 +52670,7 @@ const NavigationBar = ({ user  })=>{
                                 }, undefined),
                                 /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactBootstrap.Nav).Link, {
                                     className: "text-white",
-                                    onClick: ()=>dispatch((0, _user.setUser)("")),
+                                    onClick: ()=>dispatch((0, _user.setUser)("a")),
                                     children: "Logout"
                                 }, void 0, false, {
                                     fileName: "src/components/navigation-bar/navigation-bar.jsx",

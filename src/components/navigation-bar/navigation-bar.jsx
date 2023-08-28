@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 import { setUser } from "../../redux/reducers/user";
 
-export const NavigationBar = ({ user }) => {
+export const NavigationBar = ({ user, onLoggedOut }) => {
   // const user = useSelector((state) => state.user);
 
   const dispatch = useDispatch();
@@ -38,7 +38,7 @@ export const NavigationBar = ({ user }) => {
                 </Nav.Link>
                 <Nav.Link
                   className="text-white"
-                  onClick={() => dispatch(setUser(""))}
+                  onClick={() => dispatch(setUser("a"))}
                 >
                   Logout
                 </Nav.Link>
