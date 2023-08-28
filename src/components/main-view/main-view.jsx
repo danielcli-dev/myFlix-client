@@ -87,8 +87,8 @@ export const MainView = () => {
     setToken(token);
   };
   const onLoggedOut = () => {
-    setUser("");
-    setToken("");
+    setUser("a");
+    setToken("a");
     // setUser(null);
     // setToken(null);
     // dispatch(setUser(""));
