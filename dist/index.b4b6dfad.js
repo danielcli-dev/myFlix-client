@@ -52670,7 +52670,7 @@ const NavigationBar = ({ user , onLoggedOut  })=>{
                                 }, undefined),
                                 /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactBootstrap.Nav).Link, {
                                     className: "text-white",
-                                    onClick: ()=>dispatch((0, _user.setUser)("a")),
+                                    onClick: onLoggedOut,
                                     children: "Logout"
                                 }, void 0, false, {
                                     fileName: "src/components/navigation-bar/navigation-bar.jsx",

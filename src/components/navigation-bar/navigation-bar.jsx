@@ -36,10 +36,7 @@ export const NavigationBar = ({ user, onLoggedOut }) => {
                 <Nav.Link className="text-white" as={Link} to={`/profile`}>
                   Profile
                 </Nav.Link>
-                <Nav.Link
-                  className="text-white"
-                  onClick={() => dispatch(setUser("a"))}
-                >
+                <Nav.Link className="text-white" onClick={onLoggedOut}>
                   Logout
                 </Nav.Link>
               </>
