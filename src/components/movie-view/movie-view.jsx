@@ -59,7 +59,7 @@ export const MovieView = ({ favorites, toggleFavoriteMovie }) => {
             </div>
             <div>
               <span>Actors: </span>
-              <span>{movie.actors[0]}</span>
+              <span>{movie.actors.toString()}</span>
             </div>
             <div>
               <span>Featured: </span>
