@@ -50,16 +50,16 @@ export const MovieView = ({ favorites, toggleFavoriteMovie }) => {
             <div>
               <span>Birth: </span>
 
-              <span>{movie.director.Birth}</span>
+              <span>{movie.director.Birth.slice(0, 10)}</span>
             </div>
             <div>
               <span>Death: </span>
 
-              <span>{movie.director.Death}</span>
+              (movie.director.Death && <span>{movie.director.Death.slice(0, 10)}</span> : <span>N/A</span>)
             </div>
             <div>
               <span>Actors: </span>
-              <span>{movie.actors.toString()}</span>
+              <span>{movie.actors.join(', ')}</span>
             </div>
             <div>
               <span>Featured: </span>
