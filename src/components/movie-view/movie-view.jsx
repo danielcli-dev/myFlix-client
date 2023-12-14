@@ -61,7 +61,7 @@ export const MovieView = ({ favorites, toggleFavoriteMovie }) => {
             <div>
               <span>Death: </span>
 
-              <span>{movie.director.Death ? movie.director.Death : "N/A"}</span>
+              <span>{movie.director.Death ? movie.director.Death.slice(0, 10) : "N/A"}</span>
             </div>
 
             <div className="d-flex align-items-center">
