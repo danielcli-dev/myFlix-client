@@ -27,7 +27,7 @@ export const MovieView = ({ favorites, toggleFavoriteMovie }) => {
         <div className="col">
           <Col>
             <div>
-              <span>Title:</span>
+              <span>Title: </span>
               <span>{movie.title}</span>
             </div>
             <div>
@@ -35,7 +35,7 @@ export const MovieView = ({ favorites, toggleFavoriteMovie }) => {
               <span>{movie.genre.Name}</span>
             </div>
             <div>
-              <span>Description:</span>
+              <span>Description: </span>
               <span>{movie.description}</span>
             </div>
             <div>
