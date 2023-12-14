@@ -39,9 +39,15 @@ export const MovieView = ({ favorites, toggleFavoriteMovie }) => {
               <span>{movie.description}</span>
             </div>
             <div>
+              <span>Actors: </span>
+              <span>{movie.actors.join(", ")}</span>
+            </div>
+            <br />
+            <div>
               <span>Director: </span>
               <span>{movie.director.Name}</span>
             </div>
+
             <div>
               <span>Bio: </span>
 
@@ -55,16 +61,9 @@ export const MovieView = ({ favorites, toggleFavoriteMovie }) => {
             <div>
               <span>Death: </span>
 
-              (movie.director.Death && <span>{movie.director.Death}</span> : <span>N/A</span>)
+              <span>{movie.director.Death ? movie.director.Death : "N/A"}</span>
             </div>
-            <div>
-              <span>Actors: </span>
-              <span>{movie.actors.join(', ')}</span>
-            </div>
-            <div>
-              <span>Featured: </span>
-              <span>{movie.featured}</span>
-            </div>
+
             <div className="d-flex align-items-center">
               <Button
                 className="btn btn-light btn-outline-light rounded-circle align-items-center justify-content-center"
