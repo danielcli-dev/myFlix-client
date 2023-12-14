@@ -276,7 +276,12 @@ export const MainView = () => {
                                   dispatch(setSearchTerm(e.target.value))
                                 }
                               />
-                              <Button className="rounded">X</Button>
+                              <Button
+                                className="rounded mx-1"
+                                onClick={setSearchTerm("")}
+                              >
+                                X
+                              </Button>
                             </Form.Group>
                           </Col>
                         </Row>
