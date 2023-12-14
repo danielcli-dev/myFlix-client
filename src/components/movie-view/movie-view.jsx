@@ -71,6 +71,7 @@ export const MovieView = ({ favorites, toggleFavoriteMovie }) => {
 
             <div className="d-flex align-items-center">
               <Button
+                title="Add to favorites"
                 className="btn btn-light btn-outline-light rounded-circle align-items-center justify-content-center"
                 onClick={() => {
                   toggleFavoriteMovie(movie);
