@@ -36,14 +36,17 @@ export const ProfileView = ({
       Birthday: birthday,
     };
 
-    fetch(`https://cfdb-movie-api-59ec69f25db6.herokuapp.com/users/${user.Username}`, {
-      method: "PUT",
-      body: JSON.stringify(data),
-      headers: {
-        Authorization: `Bearer ${token}`,
-        "Content-Type": "application/json",
-      },
-    }).then((response) => {
+    fetch(
+      `https://cfdb-movie-api-59ec69f25db6.herokuapp.com/users/${user.Username}`,
+      {
+        method: "PUT",
+        body: JSON.stringify(data),
+        headers: {
+          Authorization: `Bearer ${token}`,
+          "Content-Type": "application/json",
+        },
+      }
+    ).then((response) => {
       if (response.ok) {
         alert("Update successful");
         window.location.reload();
@@ -165,7 +168,19 @@ export const ProfileView = ({
           </ListGroup>
         </Card.Body>
       </Card>
-      <Button variant="danger" className="my-3" onClick={handleDeregister}>
+
+      <Button
+        variant="danger"
+        className="my-3"
+        onClick={() => {
+          var answer = window.confirm("Are you sure?");
+          if (answer) {
+            handleDeregister();
+          } else {
+            window.alert("Deregister cancelled");
+          }
+        }}
+      >
         Deregister
       </Button>
     </Col>
