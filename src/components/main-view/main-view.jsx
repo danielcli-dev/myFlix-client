@@ -76,9 +76,7 @@ export const MainView = () => {
             featured: doc.Featured,
           };
         });
-        // setMovies(moviesFromApi);
         dispatch(setMovies(moviesFromApi));
-        // setSearchMovies(moviesFromApi);
         setHasLoaded(true);
       });
   }, [token]);
@@ -91,10 +89,6 @@ export const MainView = () => {
   const onLoggedOut = () => {
     setUser("");
     setToken("");
-    // setUser(null);
-    // setToken(null);
-    // dispatch(setUser(""));
-    // dispatch(setToken(""));
     localStorage.clear();
   };
 

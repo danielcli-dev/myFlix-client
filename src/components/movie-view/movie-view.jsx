@@ -56,7 +56,7 @@ export const MovieView = ({ favorites, toggleFavoriteMovie }) => {
             <div>
               <span>Birth: </span>
 
-              <span>{movie.director.Birth}</span>
+              <span>{movie.director.Birth.slice(0, 10)}</span>
             </div>
             <div>
               <span>Death: </span>
