@@ -35,7 +35,7 @@ export const MainView = () => {
   }, []);
 
   useEffect(() => {
-    if (movies) {
+    if (movies && movies.length != 0) {
       setFavoritesList(movies.filter((m) => favorites.includes(m.id)));
     }
   }, [movies, favorites]);
@@ -48,7 +48,6 @@ export const MainView = () => {
         }
       });
       setSearchMovies(filteredMovies);
-      console.log("these are the searched movies", searchMovies);
     }
   }, [movies, searchTerm]);
 
@@ -65,7 +64,6 @@ export const MainView = () => {
     })
       .then((response) => response.json())
       .then((movies) => {
-        console.log(movies);
         const moviesFromApi = movies.map((doc) => {
           return {
             id: doc._id,
@@ -84,12 +82,13 @@ export const MainView = () => {
         setHasLoaded(true);
       });
   }, [token]);
+
   const onLoggedIn = (user, token) => {
     setUser(user);
     setToken(token);
   };
+
   const onLoggedOut = () => {
-    console.log("trying to log out");
     setUser("");
     setToken("");
     // setUser(null);
