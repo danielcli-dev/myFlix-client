@@ -35,7 +35,7 @@ export const MainView = () => {
   }, []);
 
   useEffect(() => {
-    if (movies && favorites.length != 0) {
+    if (movies && favorites) {
       setFavoritesList(movies.filter((m) => favorites.includes(m.id)));
     }
   }, [movies, favorites]);
