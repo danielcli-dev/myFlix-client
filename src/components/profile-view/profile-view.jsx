@@ -49,8 +49,7 @@ export const ProfileView = ({
     ).then((response) => {
       if (response.ok) {
         alert("Update successful");
-        window.location.href = "../";
-        // window.location.reload();
+        // window.location.href = "../";
       } else {
         alert("Update failed");
       }
